@@ -3,7 +3,10 @@ package com.hannah.springbootmall.service;
 import com.hannah.springbootmall.dto.ProductRequest;
 import com.hannah.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductService {
+    List<Product> getProducts();
 
     Product getProductById(Integer productId);
 
@@ -12,4 +15,5 @@ public interface ProductService {
     void updateProduct(Integer productId, ProductRequest productRequest);
 
     void deleteProductById(Integer productId);
+
 }
