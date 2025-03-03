@@ -1,6 +1,7 @@
 package com.hannah.springbootmall.controller;
 
 import com.hannah.springbootmall.constant.ProductCategory;
+import com.hannah.springbootmall.dto.ProductQueryParams;
 import com.hannah.springbootmall.dto.ProductRequest;
 import com.hannah.springbootmall.model.Product;
 import com.hannah.springbootmall.service.ProductService;
@@ -22,7 +23,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts(
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false)  String search) {
-        List<Product> productList = productService.getProducts(category, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+        List<Product> productList = productService.getProducts(productQueryParams);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 

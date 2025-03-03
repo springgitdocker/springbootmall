@@ -1,13 +1,13 @@
 package com.hannah.springbootmall.service;
 
-import com.hannah.springbootmall.constant.ProductCategory;
+import com.hannah.springbootmall.dto.ProductQueryParams;
 import com.hannah.springbootmall.dto.ProductRequest;
 import com.hannah.springbootmall.model.Product;
 
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getProducts(ProductCategory category, String search);
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 
