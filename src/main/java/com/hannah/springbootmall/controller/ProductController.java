@@ -38,11 +38,6 @@ public class ProductController {
             @RequestParam(defaultValue = "5") @Max(1000) @Min(0) Integer limit,
             @RequestParam(defaultValue = "0") @Min(0) Integer offset
     ) {
-        System.out.println("Category: " + category);
-        System.out.println("Search: " + search);
-        System.out.println("OrderBy: " + orderBy);
-        System.out.println("Sort: " + sort);
-
         ProductQueryParams productQueryParams = new ProductQueryParams();
         productQueryParams.setCategory(category);
         productQueryParams.setSearch(search);

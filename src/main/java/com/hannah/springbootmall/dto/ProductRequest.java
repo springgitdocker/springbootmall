@@ -4,7 +4,6 @@ import com.hannah.springbootmall.constant.ProductCategory;
 import jakarta.validation.constraints.NotNull;
 
 public class ProductRequest {
-
     @NotNull
     private String productName;
     @NotNull
