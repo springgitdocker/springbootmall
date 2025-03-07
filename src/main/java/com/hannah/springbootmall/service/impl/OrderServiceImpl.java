@@ -4,15 +4,16 @@ import com.hannah.springbootmall.dao.OrderDao;
 import com.hannah.springbootmall.dao.ProductDao;
 import com.hannah.springbootmall.dto.BuyItem;
 import com.hannah.springbootmall.dto.CreateOrderRequest;
+import com.hannah.springbootmall.model.Order;
 import com.hannah.springbootmall.model.OrderItem;
 import com.hannah.springbootmall.model.Product;
 import com.hannah.springbootmall.service.OrderService;
-import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class OrderServiceImpl implements OrderService {
@@ -22,6 +23,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+        Order order = orderDao.getOrderById(orderId);
+        List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(orderId);
+        order.setOrderItemList(orderItemList);
+        return order;
+    }
 
     @Transactional
     @Override
