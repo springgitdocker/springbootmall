@@ -69,9 +69,15 @@ public class OrderServiceImpl implements OrderService {
         User user = userDao.getUserById(userId);
 
         if (user == null) {
+            log.warn("========");
             log.warn("該 userId {} 不存在, userId");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+        if(createOrderRequest.getBuyItemList().isEmpty()) {
+            log.warn("buyItemList 為空");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         // 計算訂單總花費資訊
         int totalAmount = 0;
         List<OrderItem> orderItemList = new ArrayList<>();
